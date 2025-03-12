@@ -1,0 +1,49 @@
+<!-- app/views/users/index.html.erb -->
+<div class="hero-section">
+  <h1>Welcome to LoveConnect</h1>
+  <p class="slogan">Find Your Perfect Match Today!</p>
+  <%= link_to 'Join Now', new_user_path, class: 'cta-button' %>
+</div>
+
+<div class="features-section">
+  <h2>Why Choose LoveConnect?</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <i class="fas fa-heart"></i>
+      <h3>Smart Matching</h3>
+      <p>Our algorithm finds compatible matches based on your interests</p>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-users"></i>
+      <h3>Active Community</h3>
+      <p>Join thousands of singles looking for love</p>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-lock"></i>
+      <h3>Secure & Private</h3>
+      <p>Your information stays safe with us</p>
+    </div>
+  </div>
+</div>
+
+<div class="featured-users">
+  <h2>Featured Members</h2>
+  <div class="users-grid">
+    <% @users.limit(5).each do |user| %>
+      <div class="user-card">
+        <div class="user-avatar"></div>
+        <h3><%= user.name %>, <%= user.age %></h3>
+        <p><%= user.city %>, <%= user.country %></p>
+        <%= link_to 'View Profile', user_path(user), class: 'profile-link' %>
+      </div>
+    <% end %>
+  </div>
+    <br>
+
+    <%= link_to 'See All Members' , all_users_path %>
+</div>
+
+<footer>
+  <p>&copy; <%= Time.current.year %> LoveConnect. All rights reserved.</p>
+</footer>
+

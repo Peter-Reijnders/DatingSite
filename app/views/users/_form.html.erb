@@ -1,0 +1,60 @@
+<%= form_with(model: user, local: true, class: 'user-form') do |form| %>
+  <% if user.errors.any? %>
+    <div class="error-messages">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this profile from being saved:</h2>
+      <ul>
+        <% user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name, "Your Name" %>
+    <%= form.text_field :name, placeholder: "Enter your full name", class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :age, "Your Age" %>
+    <%= form.number_field :age, placeholder: "Enter your age", class: 'form-control', min: 18 %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :gender, "Gender" %>
+    <%= form.select :gender, 
+                    options_for_select([['Male', 'Male'], ['Female', 'Female'], ['Other', 'Other']], user.gender), 
+                    { prompt: 'Select your gender' }, 
+                    class: 'form-control' %>
+  </div>
+ 
+ <div class="form-group">
+    <%= form.label :email, "Email" %>
+    <%= form.text_field :email, placeholder: "Enter your E-mail address", class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :city, "City" %>
+    <%= form.text_field :city, placeholder: "Where do you live?", class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :country, "Country" %>
+    <%= form.text_field :country, placeholder: "Your country", class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :looking_for, "Looking For" %>
+    <%= form.text_field :looking_for, placeholder: "What are you looking for", class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :photo, "Photo" %>
+    <%= form.text_field :photo, placeholder: "photo location and filename", class: 'form-control' %>
+  </div>
+
+  <div class="form-actions">
+    <%= form.submit "Create Profile", class: 'submit-button' %>
+    <%= link_to 'Back', root_path, class: 'back-button' %>
+  </div>
+<% end %>

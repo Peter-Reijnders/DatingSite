@@ -1,0 +1,25 @@
+<!-- app/views/users/all_users.html.erb -->
+<div class="hero-section">
+  <h1>Welcome to LoveConnect</h1>
+</div>
+
+
+<div class="featured-users">
+  <h2>Featured Members</h2>
+  <div class="users-grid">
+    <% @users.each do |user| %>
+      <div class="user-card">
+        <div class="user-avatar"></div>
+        <h3><%= user.name %>, <%= user.age %></h3>
+        <p><%= user.city %>, <%= user.country %></p>
+        <%= link_to 'View Profile', user_path(user), class: 'profile-link' %>
+      </div>
+    <% end %>
+  </div>
+ <%= link_to 'Back to Home', root_path %>
+</div>
+
+
+<footer>
+  <p>&copy; <%= Time.current.year %> LoveConnect. All rights reserved.</p>
+</footer>

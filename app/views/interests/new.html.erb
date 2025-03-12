@@ -1,0 +1,41 @@
+<div class="interest-form-container">
+  <h1 class="form-title">Add a New Interest</h1>
+  
+  <%= form_with(model: [@user, @interest], local: true, class: "interest-form") do |form| %>
+    <% if @interest.errors.any? %>
+      <div class="error-messages">
+        <h2><%= pluralize(@interest.errors.count, "error") %> prohibited this interest from being saved:</h2>
+        <ul>
+          <% @interest.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-field">
+      <%= form.label :interest, "What's your interest?  " %>
+      <%= form.text_field :interest, class: "form-input", placeholder: "e.g., Photography" %>
+    </div>
+
+    <div class="form-field">
+        <h2> </h2>
+      <%= form.label :description, "Tell us more about it:  " %>
+      <%= form.text_area :description, class: "form-textarea", placeholder: "What do you love about this interest?" %>
+    </div>
+
+    <div class="form-field">
+      <h2> </h2>
+      <%= form.label :interest_level, "How passionate are you? (1-5)" %>
+      <%= form.range_field :interest_level, in: 1..5, class: "form-range" %>
+      <span class="range-value">5</span>
+      <h2> </h2>
+      <h2> </h2>
+      <h2> </h2>
+    </div>
+
+    <div class="form-actions">
+      <%= form.submit "Add Interest", class: "submit-button" %>
+    </div>
+  <% end %>
+</div>

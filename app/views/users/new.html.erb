@@ -1,0 +1,15 @@
+<!-- app/views/users/new.html.erb -->
+<div class="registration-container">
+  <div class="registration-header">
+    <h1>Join LoveConnect</h1>
+    <p class="subtitle">Create your profile and start finding love today!</p>
+  </div>
+
+  <div class="registration-form">
+    <%= render 'form', user: @user %>
+  </div>
+ 
+  <div class="registration-footer">
+    <p>Already a member? <%= link_to 'Sign in', '#', class: 'sign-in-link' %></p>
+  </div>
+</div>
